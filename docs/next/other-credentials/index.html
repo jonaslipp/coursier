@@ -3,16 +3,16 @@
  <head>
   <meta charSet="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Cache · Coursier</title>
+  <title>Credentials · Coursier</title>
   <meta name="viewport" content="width=device-width">
   <meta name="generator" content="Docusaurus">
-  <meta name="description" content="## Path format">
+  <meta name="description" content="Credentials can be passed either:">
   <meta name="docsearch:version" content="next">
   <meta name="docsearch:language" content="en">
-  <meta property="og:title" content="Cache · Coursier">
+  <meta property="og:title" content="Credentials · Coursier">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://get-coursier.io/index.html">
-  <meta property="og:description" content="## Path format">
+  <meta property="og:description" content="Credentials can be passed either:">
   <meta name="twitter:card" content="summary">
   <link rel="shortcut icon" href="../../../../undefined">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css">
@@ -94,10 +94,10 @@
          <div class="navGroup">
           <h3 class="navGroupCategoryTitle">Other</h3>
           <ul>
-           <li class="navListItem navListItemActive"><a class="navItem" href="../../../../docs/next/cache">Cache</a></li>
+           <li class="navListItem"><a class="navItem" href="../../../../docs/next/cache">Cache</a></li>
            <li class="navListItem"><a class="navItem" href="../../../../docs/next/ttl">TTL</a></li>
            <li class="navListItem"><a class="navItem" href="../../../../docs/next/other-repositories">Repositories</a></li>
-           <li class="navListItem"><a class="navItem" href="../../../../docs/next/other-credentials">Credentials</a></li>
+           <li class="navListItem navListItemActive"><a class="navItem" href="../../../../docs/next/other-credentials">Credentials</a></li>
            <li class="navListItem"><a class="navItem" href="../../../../docs/next/other-proxy">Proxy</a></li>
            <li class="navListItem"><a class="navItem" href="../../../../docs/next/json-report">JSON report</a></li>
            <li class="navListItem"><a class="navItem" href="../../../../docs/next/extra">Extra</a></li>
@@ -150,62 +150,72 @@
      <div class="wrapper">
       <div class="post">
        <header class="postHeader">
-        <a class="edit-page-link button" href="https://github.com/coursier/coursier/edit/master/doc/docs/cache.md" target="_blank" rel="noreferrer noopener">Edit</a>
-        <h1 class="postHeaderTitle">Cache</h1>
+        <a class="edit-page-link button" href="https://github.com/coursier/coursier/edit/master/doc/docs/other-credentials.md" target="_blank" rel="noreferrer noopener">Edit</a>
+        <h1 class="postHeaderTitle">Credentials</h1>
        </header>
        <article>
         <div>
-         <span><h2><a class="anchor" aria-hidden="true" id="path-format"></a><a href="index.html#path-format" aria-hidden="true" class="hash-link">
-            <svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewbox="0 0 16 16" width="16">
-             <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
-            </svg></a>Path format</h2> <p>The cache is supposed to cache static resources, that don't change often (snapshot artifacts being the exception - these then follow TTL).</p> <p>The content of a URL like</p> <pre><code class="hljs css language-bash">https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.7/scala-library-2.12.7.jar
-</code></pre> <p>is kept under</p> <pre><code class="hljs">CACHE_PATH/https/repo1<span class="hljs-selector-class">.maven</span><span class="hljs-selector-class">.org</span>/maven2/org/scala-lang/scala-library/<span class="hljs-number">2.12</span>.<span class="hljs-number">7</span>/scala-library-<span class="hljs-number">2.12</span>.<span class="hljs-number">7</span><span class="hljs-selector-class">.jar</span>
-</code></pre> <h2><a class="anchor" aria-hidden="true" id="location"></a><a href="index.html#location" aria-hidden="true" class="hash-link">
-            <svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewbox="0 0 16 16" width="16">
-             <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
-            </svg></a>Location</h2> <h3><a class="anchor" aria-hidden="true" id="default-location"></a><a href="index.html#default-location" aria-hidden="true" class="hash-link">
-            <svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewbox="0 0 16 16" width="16">
-             <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
-            </svg></a>Default location</h3> <p>On a system where only recent versions of coursier were ever run (&gt;= <code>1.0.0-RC12-1</code>, released on the 2017/10/31), the default cache location is platform-dependent:</p> 
+         <span><p>Credentials can be passed either:</p> 
           <ul> 
-           <li>on Linux, <code>~/.cache/coursier/v1</code>. This also applies to Linux-based CI environments, and FreeBSD too.</li> 
-           <li>on OS X, <code>~/Library/Caches/Coursier/v1</code>.</li> 
-           <li>on Windows, <code>%LOCALAPPDATA%\Coursier\Cache\v1</code>, which, for user <code>Alex</code>, typically corresponds to <code>C:\Users\Alex\AppData\Local\Coursier\Cache\v1</code>.</li> 
-          </ul> <h3><a class="anchor" aria-hidden="true" id="manual-override"></a><a href="index.html#manual-override" aria-hidden="true" class="hash-link">
+           <li><a href="index.html#inline">inline</a>, via the <code>COURSIER_CREDENTIALS</code> environment variable or the <code>coursier.credentials</code> Java property,</li> 
+           <li>via <a href="index.html#property-file">a property file</a>, or</li> 
+           <li><a href="index.html#per-repository">per repository</a>, the former / legacy way (which suffers some limitations).</li> 
+          </ul> <h2><a class="anchor" aria-hidden="true" id="inline"></a><a href="index.html#inline" aria-hidden="true" class="hash-link">
             <svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewbox="0 0 16 16" width="16">
              <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
-            </svg></a>Manual override</h3> <p>These locations take precedence over all the others:</p> 
+            </svg></a>Inline</h2> <p>Pass credentials via the <code>COURSIER_CREDENTIALS</code> environment variable or the <code>coursier.credentials</code> Java property.</p> <p>Example</p> <pre><code class="hljs css language-bash">$ <span class="hljs-built_in">export</span> COURSIER_CREDENTIALS=<span class="hljs-string">" artifacts.foo.com(the realm) alex:my-pass oss.sonatype.org alex-sonatype:aLeXsOnAtYpE "</span>
+$ coursier fetch -r https://artifacts.foo.com/maven …
+</code></pre> <p>It should contain lines like</p> 
           <ul> 
-           <li>from the CLI, the location passed to the <code>--cache</code> option,</li> 
-           <li>from sbt-coursier, the location passed to the <code>coursierCache</code> setting,</li> 
-           <li>from the API, the location passed via the <code>cache</code> argument to most methods of the <code>coursier.Cache</code> object.</li> 
-          </ul> <p>If none of these locations is specified, <code>COURSIER_CACHE</code> in the environment is looked at if it is set.</p> <p>Else the <code>coursier.cache</code> Java property is looked at, if it is set.</p> <p>Else the default location above is used.</p> <h3><a class="anchor" aria-hidden="true" id="compatibility-with-former-versions"></a><a href="index.html#compatibility-with-former-versions" aria-hidden="true" class="hash-link">
+           <li><code>host user:password</code></li> 
+           <li><code>host(realm) user:password</code></li> 
+          </ul> <p>The first one matches any realm. The second one only matches a specific HTTP Basic auth realm.</p> <p>Space characters are the beginning of each line are ignored. Empty lines are ignored too.</p> <p>From the CLI, you can also pass those explicitly via the <code>--credentials</code> option, like</p> <pre><code class="hljs css language-bash">$ coursier fetch -r https://artifacts.foo.com/maven \
+    --credentials <span class="hljs-string">"artifacts.foo.com(the realm) alex:my-pass"</span> \
+    --credentials <span class="hljs-string">"oss.sonatype.org alex-sonatype:aLeXsOnAtYpE"</span> \
+    …
+</code></pre> <p>Pass <code>--use-env-credentials=false</code> to also ignore the content of <code>COURSIER_CREDENTIALS</code> (environment) and <code>coursier.credentials</code> (Java property). Only <code>--credentials</code> and <code>--credential-file</code> are considered then.</p> <h2><a class="anchor" aria-hidden="true" id="property-file"></a><a href="index.html#property-file" aria-hidden="true" class="hash-link">
             <svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewbox="0 0 16 16" width="16">
              <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
-            </svg></a>Compatibility with former versions</h3> <p>The default location above was set up in coursier <code>1.0.0-RC12-1</code> (released on 2017/10/31). The default cache path of former versions was <code>~/.coursier/cache/v1</code>, both on Linux and OS X.</p> <p>In order not to re-download all artifacts again, the first version of coursier run on a system, either former or newer, sets the location for newer versions.</p> <p>That is, if a version before <code>1.0.0-RC12-1</code> was run first, all versions of coursier , before and after <code>1.0.0-RC12-1</code>, will use <code>~/.coursier/cache/v1</code> by default.</p> <p>If <code>1.0.0-RC12-1</code> or a newer version was run first, newer versions will use the new default location. Former versions, if ever they are used, will still rely on <code>~/.coursier/cache/v1</code>. It is expected these should not be used much any more, so that <code>~/.coursier/cache/v1</code> can be removed when you're confident no former version is used any more.</p> <p>In more detail, 3 cases can happen:</p> 
-          <ul> 
-           <li>if the new location exists, it is used, even if the former location exists too. (It is assumed the former location was created by a former version run exceptionally, and doesn't correspond to the main cache location.)</li> 
-           <li>the new location doesn't exist, but the former one does. In that case, the former location is assumed to be the main cache, and is used.</li> 
-           <li>the new location doesn't exist, neither the former one. In that case, the new location is created, and should be used subsequently (first case above).</li> 
-          </ul> </span>
+            </svg></a>Property file</h2> <p>Credentials can be passed via property files too. By default, <code>~/.config/coursier/credentials.properties</code> is read (<code>~/Library/Preferences/Coursier/credentials.properties</code> on OS X).</p> <h3><a class="anchor" aria-hidden="true" id="format"></a><a href="index.html#format" aria-hidden="true" class="hash-link">
+            <svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewbox="0 0 16 16" width="16">
+             <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+            </svg></a>Format</h3> <p>The credential property file format is like</p> <pre><code class="hljs">simple.<span class="hljs-attribute">username</span>=simple
+simple.<span class="hljs-attribute">password</span>=SiMpLe
+simple.<span class="hljs-attribute">host</span>=artifacts.simple.com
+simple.<span class="hljs-attribute">realm</span>=simple realm
+
+otherone.<span class="hljs-attribute">username</span>=j
+otherone.<span class="hljs-attribute">password</span>=imj
+otherone.<span class="hljs-attribute">host</span>=nexus.other.com
+</code></pre> <p>This file is loaded with <a href="https://docs.oracle.com/javase/tutorial/essential/environment/properties.html"><code>java.util.Properties.load</code></a>.</p> <p>The username, password, host, and optional realm properties all start with a common prefix (<code>simple</code> and <code>otherone</code> above). That prefix can be arbitrary. It's only used to specify several credentials in a single file.</p> <p>If no realm property is specified, the corresponding credentials are passed to the host, no matter its HTTP Basic auth realm.</p> <p>To read a file from an alternate location, pass it via the <code>COURSIER_CREDENTIALS</code> environment variable or <code>coursier.credentials</code> Java property (same ones as above). Set its value to the full path of your credential file, like <code>/home/alex/.credentials</code>. <code>COURSIER_CREDENTIALS</code> and <code>coursier.credentials</code> are assumed to point to a file if their value starts with <code>/</code>, or <code>file:</code> (URL format).</p> <p>The CLI can also be passed a path via the <code>--credential-file</code> option (can be specified multiple times).</p> <p>Pass <code>--use-env-credentials=false</code> to also ignore the content of <code>COURSIER_CREDENTIALS</code> (environment) and <code>coursier.credentials</code> (Java property). Only <code>--credentials</code> and <code>--credential-file</code> are considered then.</p> <h2><a class="anchor" aria-hidden="true" id="per-host"></a><a href="index.html#per-host" aria-hidden="true" class="hash-link">
+            <svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewbox="0 0 16 16" width="16">
+             <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+            </svg></a>Per host</h2> <p>This is the legacy way of passing credentials. Prefer the methods above if that's a possibility.</p> <p>The CLI still accepts credentials passed along specific repositories, like</p> <pre><code class="hljs css language-bash">$ coursier fetch -r https://user:password@artifacts.foo.com/maven …
+</code></pre> <p>The API accept those too, when creating a repository, for example,</p> <pre><code class="hljs css language-scala"><span class="hljs-keyword">import</span> coursier.<span class="hljs-type">MavenRepository</span>
+<span class="hljs-keyword">import</span> coursier.core.<span class="hljs-type">Authentication</span>
+
+<span class="hljs-keyword">val</span> repo = <span class="hljs-type">MavenRepository</span>(
+  <span class="hljs-string">"https://user:password@artifacts.foo.com/maven"</span>,
+  authentication = <span class="hljs-type">Some</span>(<span class="hljs-type">Authentication</span>(<span class="hljs-string">"user"</span>, <span class="hljs-string">"password"</span>))
+)
+</code></pre> <p>Not that from now on (coursier <code>&gt; 1.1.0-M13-2</code>), these credentials are <em>not</em> passed upon redirection. If you want to pass some credentials when a redirection happens, pass them either <a href="index.html#inline">inline</a> or via a <a href="index.html#property-file">property file</a>, for the host of the redirection.</p> </span>
         </div>
        </article>
       </div>
       <div class="docs-prevnext">
-       <a class="docs-prev button" href="../../../../docs/next/api-scala-js"><span class="arrow-prev">← </span><span>Previous</span></a>
-       <a class="docs-next button" href="../../../../docs/next/ttl"><span>Next</span><span class="arrow-next"> →</span></a>
+       <a class="docs-prev button" href="../../../../docs/next/other-repositories"><span class="arrow-prev">← </span><span>Previous</span></a>
+       <a class="docs-next button" href="../../../../docs/next/other-proxy"><span>Next</span><span class="arrow-next"> →</span></a>
       </div>
      </div>
     </div>
     <nav class="onPageNav docOnPageNav">
      <ul class="toc-headings">
-      <li><a href="index.html#path-format">Path format</a></li>
-      <li><a href="index.html#location">Location</a>
+      <li><a href="index.html#inline">Inline</a></li>
+      <li><a href="index.html#property-file">Property file</a>
        <ul class="toc-headings">
-        <li><a href="index.html#default-location">Default location</a></li>
-        <li><a href="index.html#manual-override">Manual override</a></li>
-        <li><a href="index.html#compatibility-with-former-versions">Compatibility with former versions</a></li>
+        <li><a href="index.html#format">Format</a></li>
        </ul></li>
+      <li><a href="index.html#per-host">Per host</a></li>
      </ul>
     </nav>
    </div>
