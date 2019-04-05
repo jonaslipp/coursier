@@ -36935,37 +36935,51 @@ $c_Lcoursier_core_Resolution$.prototype.init___ = (function() {
   };
   var jsx$1 = new $c_T2().init___O__O(self$3, y$3);
   var self$4 = new $c_Lcoursier_core_Configuration().init___T($m_Lcoursier_core_Configuration$().test$1);
-  var y$4 = $m_s_Predef$().Set$2.apply__sc_Seq__sc_GenTraversable($m_sci_Nil$());
-  var array$3 = [jsx$4, jsx$3, jsx$2, jsx$1, new $c_T2().init___O__O(self$4, y$4)];
-  var this$23 = new $c_scm_MapBuilder().init___sc_GenMap($m_sci_Map$EmptyMap$());
-  var i$3 = 0;
-  var len$3 = $uI(array$3.length);
-  while ((i$3 < len$3)) {
-    var index$3 = i$3;
-    var arg1$3 = array$3[index$3];
-    this$23.$$plus$eq__T2__scm_MapBuilder($as_T2(arg1$3));
-    i$3 = ((1 + i$3) | 0)
+  var array$3 = [new $c_Lcoursier_core_Configuration().init___T($m_Lcoursier_core_Configuration$().compile$1), new $c_Lcoursier_core_Configuration().init___T($m_Lcoursier_core_Configuration$().runtime$1), new $c_Lcoursier_core_Configuration().init___T($m_Lcoursier_core_Configuration$().test$1)];
+  if (($uI(array$3.length) === 0)) {
+    var y$4 = $m_sci_Set$EmptySet$()
+  } else {
+    var b$3 = new $c_scm_SetBuilder().init___sc_Set($m_sci_Set$EmptySet$());
+    var i$3 = 0;
+    var len$3 = $uI(array$3.length);
+    while ((i$3 < len$3)) {
+      var index$3 = i$3;
+      var arg1$3 = array$3[index$3];
+      b$3.$$plus$eq__O__scm_SetBuilder(arg1$3);
+      i$3 = ((1 + i$3) | 0)
+    };
+    var y$4 = b$3.elems$1
   };
-  var base = $as_sci_Map(this$23.elems$1);
+  var array$4 = [jsx$4, jsx$3, jsx$2, jsx$1, new $c_T2().init___O__O(self$4, y$4)];
+  var this$26 = new $c_scm_MapBuilder().init___sc_GenMap($m_sci_Map$EmptyMap$());
+  var i$4 = 0;
+  var len$4 = $uI(array$4.length);
+  while ((i$4 < len$4)) {
+    var index$4 = i$4;
+    var arg1$4 = array$4[index$4];
+    this$26.$$plus$eq__T2__scm_MapBuilder($as_T2(arg1$4));
+    i$4 = ((1 + i$4) | 0)
+  };
+  var base = $as_sci_Map(this$26.elems$1);
   var jsx$5 = $m_sc_Seq$();
   var self$5 = new $c_Lcoursier_core_Configuration().init___T($m_Lcoursier_core_Configuration$().default$1);
   var y$5 = base.apply__O__O(new $c_Lcoursier_core_Configuration().init___T($m_Lcoursier_core_Configuration$().runtime$1));
-  var array$4 = [new $c_T2().init___O__O(self$5, y$5)];
-  this.mavenScopes$1 = base.$$plus$plus__sc_GenTraversableOnce__sci_Map(jsx$5.apply__sc_Seq__sc_GenTraversable(new $c_sjs_js_WrappedArray().init___sjs_js_Array(array$4)));
-  var array$5 = [new $c_Lcoursier_core_Type().init___T($m_Lcoursier_core_Type$().jar$1), new $c_Lcoursier_core_Type().init___T($m_Lcoursier_core_Type$().testJar$1), new $c_Lcoursier_core_Type().init___T($m_Lcoursier_core_Type$().bundle$1)];
-  if (($uI(array$5.length) === 0)) {
+  var array$5 = [new $c_T2().init___O__O(self$5, y$5)];
+  this.mavenScopes$1 = base.$$plus$plus__sc_GenTraversableOnce__sci_Map(jsx$5.apply__sc_Seq__sc_GenTraversable(new $c_sjs_js_WrappedArray().init___sjs_js_Array(array$5)));
+  var array$6 = [new $c_Lcoursier_core_Type().init___T($m_Lcoursier_core_Type$().jar$1), new $c_Lcoursier_core_Type().init___T($m_Lcoursier_core_Type$().testJar$1), new $c_Lcoursier_core_Type().init___T($m_Lcoursier_core_Type$().bundle$1)];
+  if (($uI(array$6.length) === 0)) {
     var jsx$6 = $m_sci_Set$EmptySet$()
   } else {
-    var b$3 = new $c_scm_SetBuilder().init___sc_Set($m_sci_Set$EmptySet$());
-    var i$4 = 0;
-    var len$4 = $uI(array$5.length);
-    while ((i$4 < len$4)) {
-      var index$4 = i$4;
-      var arg1$4 = array$5[index$4];
-      b$3.$$plus$eq__O__scm_SetBuilder(arg1$4);
-      i$4 = ((1 + i$4) | 0)
+    var b$4 = new $c_scm_SetBuilder().init___sc_Set($m_sci_Set$EmptySet$());
+    var i$5 = 0;
+    var len$5 = $uI(array$6.length);
+    while ((i$5 < len$5)) {
+      var index$5 = i$5;
+      var arg1$5 = array$6[index$5];
+      b$4.$$plus$eq__O__scm_SetBuilder(arg1$5);
+      i$5 = ((1 + i$5) | 0)
     };
-    var jsx$6 = b$3.elems$1
+    var jsx$6 = b$4.elems$1
   };
   this.defaultTypes$1 = $as_sci_Set(jsx$6);
   return this
@@ -37652,7 +37666,7 @@ $c_Lcoursier_core_Resolution$.prototype.finalDependencies__Lcoursier_core_Depend
           var keep = $as_sci_Set(arg1);
           var elem = new $c_Lcoursier_core_Configuration().init___T(config$1);
           if (keep.contains__O__Z(elem)) {
-            var depConfig = ((actualConfig$2$1 === $m_Lcoursier_core_Configuration$().optional$1) ? $m_Lcoursier_core_Resolution$().defaultConfiguration$1 : from$1.configuration$1);
+            var depConfig = ((actualConfig$2$1 === $m_Lcoursier_core_Configuration$().optional$1) ? $m_Lcoursier_core_Resolution$().defaultConfiguration$1 : ((actualConfig$2$1 === $m_Lcoursier_core_Configuration$().test$1) ? $m_Lcoursier_core_Configuration$().runtime$1 : from$1.configuration$1));
             var jsx$2 = $m_sc_Seq$();
             var x$9 = dep.module$1;
             var x$10 = dep.version$1;
